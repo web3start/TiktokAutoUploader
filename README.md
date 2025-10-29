@@ -71,6 +71,17 @@ cd tiktok_uploader/tiktok-signature/
 npm i
 ```
 
+**For Headless Linux (Ubuntu/ARM/AMD):**
+
+If you're running on a headless Linux server without a GUI, you'll need to install additional system dependencies. See the [Headless Linux Setup Guide](HEADLESS_LINUX_SETUP.md) for detailed instructions.
+
+```bash
+# Install Playwright system dependencies
+cd tiktok_uploader/tiktok-signature/
+sudo npx playwright install-deps chromium
+npx playwright install chromium
+```
+
 ------------
 ### Demo
 Video showcases main usage of the app, uploading a video to TikTok.
@@ -193,6 +204,20 @@ Alternative consider starring the project, or giving me a follow ;)
 If you find any bugs or issues, please add to the issues tab, please do not email me relating to this, I will see on issues.
 
 Will work to make this more user friendly including making a PyPI package.
+
+### Troubleshooting 🔧
+
+**Upload hangs at "Uploading video..." (Headless Linux):**
+- Install Playwright dependencies: See [Headless Linux Setup Guide](HEADLESS_LINUX_SETUP.md)
+- Run the test script: `python3 test_headless.py`
+- Check error messages for missing system libraries
+
+**"Node.js signature generator timed out":**
+- Install system dependencies for Chromium
+- Ensure sufficient memory (minimum 1GB available)
+- Verify Playwright browsers are installed: `cd tiktok_uploader/tiktok-signature && npx playwright install chromium`
+
+For detailed troubleshooting, see [Headless Linux Setup Guide](HEADLESS_LINUX_SETUP.md)
 
 ------
 

@@ -11,6 +11,12 @@ class Signer {
     "--disable-infobars",
     "--window-size=1920,1080",
     "--start-maximized",
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu",
+    "--disable-software-rasterizer",
+    "--disable-extensions",
+    "--disable-setuid-sandbox",
   ];
   // Default TikTok loading page
   default_url = "https://www.tiktok.com/@rihanna?lang=en";
