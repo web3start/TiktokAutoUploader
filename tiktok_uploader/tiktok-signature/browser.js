@@ -22,6 +22,7 @@ var userAgent = process.argv[3];
     console.log(output);
     await signer.close();
   } catch (err) {
-    console.error(err);
+    console.error("Error in signature generation:", err);
+    process.exit(1);
   }
 })();

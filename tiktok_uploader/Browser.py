@@ -1,7 +1,7 @@
 from .cookies import load_cookies_from_file, save_cookies_to_file
 from fake_useragent import UserAgent, FakeUserAgentError
 import undetected_chromedriver as uc
-import threading, os
+import threading, os, sys, platform
 
 
 WITH_PROXIES = False
@@ -26,6 +26,21 @@ class Browser:
             Browser.__instance = self
         self.user_agent = ""
         options = uc.ChromeOptions()
+        
+        # Add headless mode for Linux environments without GUI
+        is_linux = sys.platform.startswith('linux')
+        is_headless = is_linux and not os.environ.get('DISPLAY')
+        
+        if is_headless:
+            print("[INFO] Detected headless Linux environment, configuring browser for headless mode")
+            options.add_argument('--headless=new')
+            options.add_argument('--no-sandbox')
+            options.add_argument('--disable-dev-shm-usage')
+            options.add_argument('--disable-gpu')
+            options.add_argument('--disable-software-rasterizer')
+            options.add_argument('--disable-extensions')
+            options.add_argument('--disable-setuid-sandbox')
+        
         # Proxies not supported on login.
         # if WITH_PROXIES:
         #     options.add_argument('--proxy-server={}'.format(PROXIES[0]))
