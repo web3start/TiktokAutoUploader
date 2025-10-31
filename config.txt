@@ -9,4 +9,6 @@ TIKTOK_VIDEO_SIZE= (1920, 1080)
 TMP_YOUTUBE_VIDEO_DIR= ""
 LANG= "en"
 TIKTOK_BASE_URL= "https=//www.tiktok.com/upload?lang="
-IMAGEMAGICK_BINARY= ""
+IMAGEMAGICK_BINARY= "/usr/bin/convert"
+HEADLESS= auto
+HEADLESS_LOGIN= false

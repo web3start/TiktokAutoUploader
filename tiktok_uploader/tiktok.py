@@ -26,7 +26,14 @@ def login(login_name: str):
         print("Unnecessary login: session already saved!")
         return session_cookie["value"]
 
-    browser = Browser.get()
+    # Check if login should run in headless mode (default is headed for better compatibility)
+    headless_login = os.getenv('HEADLESS_LOGIN', 'false').lower().strip().strip('"')
+    force_headed = headless_login != 'true'
+    
+    if force_headed:
+        print("[INFO] Login will use headed mode (GUI) - this is recommended for cookie generation")
+    
+    browser = Browser.get(force_headed=force_headed)
     response = browser.driver.get(os.getenv("TIKTOK_LOGIN_URL"))
 
     session_cookies = []

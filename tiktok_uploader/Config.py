@@ -14,7 +14,9 @@ class Config:
         "TMP_YOUTUBE_VIDEO_DIR": "",
         "LANG": "en", 
         "TIKTOK_BASE_URL": "https://www.tiktok.com/upload?lang=", 
-        "IMAGEMAGICK_BINARY": ""
+        "IMAGEMAGICK_BINARY": "",
+        "HEADLESS": "auto",
+        "HEADLESS_LOGIN": "false"
     }
 
     _EXCLUDE = ["#"]
@@ -129,3 +131,13 @@ class Config:
     def imagemagick_binary_path(self):
         """ImageMagick Binary path """
         return self.get_option_by_name("IMAGEMAGICK_BINARY")
+
+    @property
+    def headless(self):
+        """Headless mode setting - can be 'auto', 'true', or 'false'"""
+        return self.get_option_by_name("HEADLESS")
+
+    @property
+    def headless_login(self):
+        """Whether login should run in headless mode - 'true' or 'false'"""
+        return self.get_option_by_name("HEADLESS_LOGIN")
